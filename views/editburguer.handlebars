@@ -1,0 +1,17 @@
+<h1>Edite o hamburguer:</h1>
+<form action="/hamburguers/updateburguer" method="post" class="form">
+    <input type="hidden" name="id" value="{{hamburguer.id}}">
+    <div class="form-control">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" placeholder="Digite o nome" value="{{hamburguer.name}}">
+    </div>
+    <div class="form-control">
+        <label for="price">Preço:</label>
+        <input type="number" name="price" placeholder="Digite o preço" value="{{hamburguer.price}}">
+    </div>
+    <div class="form-control">
+        <label for="description">Descrição</label>
+        <input type="text" name="description" placeholder="Digite a descrição" value="{{hamburguer.description}}">
+    </div>
+    <input type="submit" value="editar">
+</form>

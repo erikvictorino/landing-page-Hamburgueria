@@ -1,0 +1,639 @@
+/* ==========================
+   RESET BÁSICO
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   BODY
+========================== */
+body {
+    background-color: rgb(180, 49, 49);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+/* ==========================
+   HEADER / NAVBAR
+========================== */
+header {
+    background-color: #fca311;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    width: 60px;
+}
+
+/* MENU */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: black;
+}
+
+/* ==========================
+   MAIN
+========================== */
+main {
+    padding: 40px 0;
+}
+
+/* ==========================
+   TÍTULOS
+========================== */
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* ==========================
+   CARDÁPIO
+========================== */
+.hamburguer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hamburguer-grid div {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 230px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hamburguer-grid p {
+    margin-bottom: 8px;
+}
+
+.hamburguer-grid a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: rgb(180, 49, 49);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+/* ==========================
+   CATEGORIAS
+========================== */
+.categorias {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.categorias-container a {
+    background-color: #ff8800;
+    padding: 10px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.categorias-container a:hover {
+    transform: scale(1.05);
+}
+
+.categorias-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ==========================
+   DETALHES DO HAMBÚRGUER
+========================== */
+#burguer-page {
+    padding: 40px;
+}
+
+#burguer-page a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#burguer-page .container {
+    background-color: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.actions a,
+.actions input {
+    background-color: rgb(180, 49, 49);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ==========================
+   FORMULÁRIOS
+========================== */
+.form {
+    background-color: white;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.form-control label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form input[type="submit"] {
+    width: 100%;
+    background-color: rgb(180, 49, 49);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ==========================
+   PEDIDO WHATSAPP
+========================== */
+.pedido-whatsapp {
+    background-color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.pedido-whatsapp h2,
+.pedido-whatsapp p {
+    color: rgb(180, 49, 49);
+    font-weight: bold;
+}
+
+.pedido-whatsapp button {
+    margin-top: 10px;
+    background-color: rgb(180, 49, 49);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pedido-whatsapp img {
+    width: 100px;
+    margin-top: 15px;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+footer {
+    background-color: #fca311;
+    padding: 25px 0;
+    text-align: center;
+}
+
+footer p {
+    color: rgb(180, 49, 49);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.redes-sociais img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.redes-sociais img:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+/* =========================
+   CARDÁPIO
+========================= */
+
+.cardapio {
+    padding: 40px 20px;
+    background-color: rgb(180, 49, 49);
+}
+
+.cardapio h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+/* GRID DE HAMBÚRGUERES */
+.hamburguer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* CARD DO HAMBÚRGUER */
+.hamburguer-grid div {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 220px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.hamburguer-grid div:hover {
+    transform: scale(1.03);
+}
+
+.hamburguer-grid p {
+    margin: 8px 0;
+    color: #333;
+    font-weight: bold;
+}
+
+/* LINK "VER DETALHES" */
+.hamburguer-grid a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #fca311;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.hamburguer-grid a:hover {
+    background-color: #e69500;
+    color: black;
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias {
+    background-color: rgb(180, 49, 49);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.categorias h1 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* CONTAINER DAS CATEGORIAS */
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CADA CATEGORIA */
+.categorias-container a {
+    background-color: #ff8800;
+    padding: 10px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.categorias-container a:hover {
+    transform: scale(1.08);
+}
+
+.categorias-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* =========================
+   PÁGINA DO HAMBÚRGUER
+========================= */
+
+#burguer-page {
+    background-color: rgb(180, 49, 49);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* LINK VOLTAR */
+#burguer-page > a {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#burguer-page > a:hover {
+    color: black;
+}
+
+/* CONTAINER DO CONTEÚDO */
+#burguer-page .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* TÍTULO */
+#burguer-page h1 {
+    margin-bottom: 20px;
+    color: rgb(180, 49, 49);
+    font-size: 28px;
+}
+
+/* TEXTO */
+#burguer-page p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* =========================
+   AÇÕES (EDITAR / REMOVER)
+========================= */
+
+.actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* BOTÃO EDITAR */
+.actions a {
+    padding: 10px 18px;
+    background-color: #fca311;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.actions a:hover {
+    background-color: #e69500;
+    color: black;
+}
+
+/* BOTÃO REMOVER */
+.actions input[type="submit"] {
+    padding: 10px 18px;
+    background-color: rgb(180, 49, 49);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.actions input[type="submit"]:hover {
+    background-color: rgb(150, 35, 35);
+}
+
+
+/* =========================
+   FORMULÁRIO ( EDIÇÃO)
+========================= */
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* CONTAINER DO FORM */
+.form {
+    max-width: 500px;
+    margin: 0 auto 60px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* CONTROLE DO FORM */
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* LABEL */
+.form-control label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: rgb(180, 49, 49);
+}
+
+/* INPUTS */
+.form-control input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* FOCO NO INPUT */
+.form-control input:focus {
+    outline: none;
+    border-color: #fca311;
+}
+
+/* BOTÃO SUBMIT */
+.form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #fca311;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #e69500;
+    color: black;
+}
+
+/* ===== TÍTULOS ===== */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin: 30px 0;
+    font-size: 28px;
+}
+
+/* ===== FORMULÁRIOS ===== */
+.form {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 0 auto 40px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== CAMPOS ===== */
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.form-control input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* ===== BOTÃO ===== */
+.form input[type="submit"] {
+    background-color: #b43131;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #8f2525;
+}
+
+/* ===== PÁGINA 404 ===== */
+.page-404 {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.page-404 h1 {
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.page-404 p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.page-404 a {
+    background-color: #fca311;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.page-404 a:hover {
+    background-color: #ffb703;
+    transform: scale(1.05);
+}

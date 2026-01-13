@@ -1,0 +1,37 @@
+<main>
+    <section class="cardapio">
+        <h1>NOSSO CARDÁPIO</h1>
+        <div class="hamburguer-grid">
+            {{#each hamburguers}}
+                <div>
+                    <img src="" alt="">
+                    <p>Nome: {{this.name}}</p>
+                    <P>Preço: R$ {{this.price}}</P>
+                    <a href="/hamburguer/{{this.id}}">Ver detalhes</a>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="categorias">
+        <h1>CATEGORIAS</h1>
+        <div class="categorias-container">
+            <a href="">
+                <img src="imagens/bebidas.jpg" alt="bebidas">
+            </a>
+
+            <a href="">
+                <img src="imagens/porção.6.jpg" alt="porção">
+            </a>
+
+            <a href="/hamburguers">
+                <img src="imagens/hamburguer.9.jpg" alt="hambúrguer">
+            </a>
+
+            <a href="">
+                <img src="imagens/cervejas.jpg" alt="cerveja">
+            </a>
+        </div>
+    </section>
+</main>
+
