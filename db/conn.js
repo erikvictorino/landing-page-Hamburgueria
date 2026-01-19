@@ -1,10 +1,8 @@
-import mysql from 'mysql'
+import { Sequelize } from 'sequelize'
 
-const pool = mysql.createPool({
-    connectionLimit: 10,
+const sequelize = new Sequelize('hamburgueria', 'root', 'root123', {
     host: 'localhost',
-    user: 'root',
-    password: 'root123',
-    database: 'hamburgueria',
+    dialect: 'mysql'
 })
-export default pool
+
+export default sequelize

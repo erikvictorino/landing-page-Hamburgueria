@@ -1,6 +1,11 @@
 <h1>Edite o hamburguer:</h1>
-<form action="/hamburguers/updateburguer" method="post" class="form">
+<form action="/hamburguers/updateburguer" method="post" class="form" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{{hamburguer.id}}">
+    <div class="form-control">
+        <label for="imagem">Imagem</label>
+        <img src="/uploads/{{hamburguer.image}}" alt="{{hamburguer.name}}">
+        <input type="file" name="image" placeholder="Imagem do Lanche" value="{{hamburguer.image}}">
+    </div>
     <div class="form-control">
         <label for="name">Nome:</label>
         <input type="text" name="name" placeholder="Digite o nome" value="{{hamburguer.name}}">

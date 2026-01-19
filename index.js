@@ -1,19 +1,20 @@
-/*
-[feito] colocar itens no banco
-[feito] mostrar os itens do banco no front
-[feito] mostrar cada hamburguer separado
-[feito] atualizar os itens da tabela
-[] deletar os itens da tabela
-*/ 
-
 import express from 'express'
 import exphbs from 'express-handlebars'
-import pool from './db/conn.js'
+import conn from './db/conn.js'
+import Hamburguer from './models/Hamburguer.js'
 import multer from 'multer'
+import path from 'path'
 
 const app = express()
-const port = 3000
-const upload = multer({dest: "uploads/"})
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads/")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname + Date.now() + path.extname(file.originalname))
+    }
+})
+const upload = multer({ storage })
 
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -25,110 +26,72 @@ app.use(
 )
 app.use(express.json())
 app.use(express.static('public'))
-
-app.get('/', (req, res) => {
-    res.render('hamburguers')
-})
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')))
 
 app.get('/cadastro', (req, res) => {
     res.render('cadastro')
 })
 
-app.post('/hamburguer/insertburguer', (req, res) => {
+app.post('/hamburguer/insertburguer', upload.single("image"), async (req, res) => {
     const name = req.body.name
     const price = req.body.price
     const description = req.body.description
-    const sql = 'INSERT INTO hamburguer (name, price, description) VALUES (?, ?, ?)'
-    const data = [name, price, description]
+    const image = req.file.filename
+    const data = {name, price, description, image}
 
-    pool.query(sql, data, function(err) {
-        if(err){
-            console.log(err)
-            return
-        }
-        res.redirect('/hamburguers')
-    })
-})
+    await Hamburguer.create(data)
 
-//rota para mostar todos os hambuguers 
-app.get('/hamburguers', (req, res) => {
-    const sql = "SELECT * FROM hamburguer"
-
-    pool.query(sql, function(err, data) {
-        if(err){
-            console.log(err)
-            return
-        }
-        const hamburguers = data
-        res.render('hamburguers', {hamburguers})
-    })
+    res.redirect('/')
 })
 
 //rota para mostrar hamburguers separadamente pelo id
-app.get('/hamburguer/:id', (req, res) => {
+app.get('/hamburguer/:id', async (req, res) => {
     const id = req.params.id
-    const sql = 'SELECT * FROM hamburguer WHERE id = ?'
 
-    pool.query(sql, [id], function(err, data) {
-        if(err){
-            console.log(err)
-            return
-        }
-        const hamburguer = data[0]
-        res.render('hamburguer', {hamburguer})
-    })
-
+    const hamburguer = await Hamburguer.findOne({raw: true, where: {id: id}})
+    res.render('hamburguer', { hamburguer })
 })
 
-
-app.get('/hamburguers/edit/:id', (req, res) => {
+app.post('/hamburguers/remove/:id', async (req, res) => {
     const id = req.params.id
-    const sql = 'SELECT * FROM hamburguer WHERE id = ?'
-    
-    pool.query(sql, [id], function(err, data) {
-        if(err){
-            console.log(err)
-            return
-        }
-        const hamburguer = data[0]
-        res.render('editburguer', {hamburguer})
-    })
+    await Hamburguer.destroy({where: {id: id}})
+    res.redirect('/')
 })
 
-app.post('/hamburguers/updateburguer', (req, res) => {
+app.get('/hamburguers/edit/:id', async (req, res) => {
+    const id = req.params.id
+    const hamburguer = await Hamburguer.findOne({raw: true, where:{id: id}})
+    res.render('editburguer', {hamburguer})
+})
+
+app.post('/hamburguers/updateburguer', upload.single("image"), async (req, res) => {
     const id = req.body.id
     const name = req.body.name
     const price = req.body.price
     const description = req.body.description
-    const sql = 'UPDATE hamburguer SET name = ?, price = ?, description = ? WHERE id = ?'
-    const data = [name, price, description, id]
+    let data = {name, price, description}
 
-    pool.query(sql, data, function(err) {
-        if(err){
-            console.log(err)
-            return
-        }
-        res.redirect('/hamburguers')
-    })
+    if(req.file){
+        data.image = req.file.filename
+    }
+
+    await Hamburguer.update(data, {where: {id}})
+
+    res.redirect('/')
 })
 
-app.post('/hamburguers/remove/:id', (req, res) => {
-    const id = req.params.id
-    const sql = 'DELETE FROM hamburguer WHERE id = ?'
+app.get('/', async (req, res) => {
+    const hamburguer = await Hamburguer.findAll({raw: true})
 
-    pool.query(sql, [id], function(err) {
-        if(err){
-            console.log(err)
-            return
-        }
-        res.redirect('/hamburguers')
-    })
+    res.render('hamburguers', {hamburguer})
 })
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.status(404).render('404')
 })
 
-app.listen(port, () => {
-    console.log(`servidor rodando na porta 3000`)
-})
+conn
+.sync()
+.then(() => {
+    app.listen(3000)
+}).catch((err) => console.log(err))
