@@ -1,0 +1,18 @@
+<form action="/hamburguers/edit" method="post"></form>
+    <div id="burguer-page">
+        <a href="/hamburguers">voltar</a>
+        <div class="container">
+            <img src="/uploads/{{hamburguer.image}}" alt="{{hamburguer.name}}">
+            <h1>{{hamburguer.name}}</h1>
+            <p>preço: R$ {{hamburguer.price}}</p>
+            <p>descrição: {{hamburguer.description}}</p>
+            <div class="actions">
+                <a href="/hamburguers/edit/{{hamburguer.id}}">Editar</a>
+                <form action="/hamburguers/remove" method="post">
+                <input type="hidden" name="id" value="{{hamburguer.id}}">
+                    <input type="submit" value="Remover">
+                </form>
+            </div>
+        </div>
+    </div>
+</form>
