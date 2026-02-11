@@ -8,8 +8,6 @@ O front-end é **propositalmente simples**, existindo apenas para permitir a vis
 
 ## 🎥 Demonstração do Projeto
 
-> *(GIF de demonstração será adicionado aqui)*
-
 ![Demonstração do sistema](.github/hamburgueria.gif)
 
 ---
